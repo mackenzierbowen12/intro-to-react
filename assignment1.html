@@ -13,21 +13,44 @@
 
      <script type="text/babel">
        class Lorem extends React.Component {
+         constructor() {
+           super();
+
+           this.state = {
+            text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Magnam odio voluptas quidem, iste ea accusantium aspernatur fugiat non
+              repudiandae necessitatibus atque illum dignissimos enim unde qui
+              aliquam deserunt, sunt fugit.`,
+            hide: false,
+           }
+
+           this.toggle = this.toggle.bind(this);
+         }
+
+         toggle() {
+           this.setState({
+             hide: !this.state.hide,
+           })
+         }
+
          render() {
            return (
              <div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Magnam odio voluptas quidem, iste ea accusantium aspernatur fugiat non
-                repudiandae necessitatibus atque illum dignissimos enim unde
-                qui aliquam deserunt, sunt fugit.</p>
+              <h1>{this.props.title}</h1>
+              <p style={{ display: this.state.hide ? 'none': 'block'}}>{this.state.text}</p>
+              <button
+                onClick={this.toggle}
+              >Toggle</button>
              </div>
            );
-           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem debitis ut necessitatibus quae, ducimus facere, quo culpa deleniti ea, voluptas officia, id aliquam. Eligendi quas, vel soluta ea et dicta.</p>
          }
        }
 
        ReactDOM.render(
-         <Lorem />, document.getElementById('app')
+         <div>
+           <Lorem title="React Practice" name="Bob" />
+           <Lorem title="React Practice 2" name="Tom" />
+         </div>, document.getElementById('app')
        );
 
      </script>
