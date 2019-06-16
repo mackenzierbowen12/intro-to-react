@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My First React App</title>
+  </head>
+
+  <body>
+
+    <div id="app"></div>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.1.0/umd/react.development.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.1.0/umd/react-dom.development.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.min.js"></script>
+
+     <script type="text/babel">
+       class Lorem extends React.Component {
+         constructor() {
+           super();
+           this.state = {
+            text: `Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Magnam odio voluptas quidem, iste ea accusantium aspernatur fugiat non
+              repudiandae necessitatibus atque illum dignissimos enim unde qui
+              aliquam deserunt, sunt fugit.`,
+            hide: false,
+           }
+           this.toggle = this.toggle.bind(this);
+         }
+         toggle() {
+           this.setState({
+             hide: !this.state.hide,
+           })
+         }
+         render() {
+           return (
+             <div>
+              <h1>{this.props.title}</h1>
+              <p style={{ display: this.state.hide ? 'none': 'block'}}>{this.state.text}</p>
+              <button
+                onClick={this.toggle}
+              >Toggle</button>
+             </div>
+           );
+         }
+       }
+       ReactDOM.render(
+         <div>
+           <Lorem title="React Practice" name="Bob" />
+           <Lorem title="React Practice 2" name="Tom" />
+         </div>, document.getElementById('app')
+       );
+     </script>
+  </body>
+</html>
+
+  </body>
+</html>
